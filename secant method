@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+float func(float x1, float x2, int a[], int d)
+{
+    double fx1 = 0.0, fx2 = 0.0;
+    for(int i = 0; i <= d;i++)
+    {
+        fx1 += (a[i] * pow(x1, (float)i));
+        fx2 +=  (a[i] * pow(x2, (float)i));
+    }
+    return ((fx2*x1 - fx1*x2)/(fx2-fx1));
+}
+
+int main()
+{
+    int deg, it = 0;
+    float x1, x2, x3 = 0;
+    cout << "what is the degree of polynomial? ";
+    cin >> deg;
+    int a[deg+1];
+    for(int i = deg; i >= 0; i--)
+    {
+        cout << "what is the coefficient of x^" << i << " ? : ";
+        cin >> a[i];
+    }
+    cout << endl << "the value of x1 = ";
+    cin >> x1;
+    cout << endl << "the value of x2 = ";
+    cin >> x2;
+    cout << endl << "How many times do you want to iterate? ";
+    cin >> it;
+    
+    for(int i = 0; i < it; i++)
+    {
+        x3 = func(x1, x2, a, deg);
+        x1 = x2;
+        x2 = x3;
+    }
+    cout << endl << "RESULT : " << setprecision(7) << x3 << endl;
+}
