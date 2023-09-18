@@ -1,0 +1,73 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+int sum_x(int ax[], int m)
+{
+    int res;
+    for(int i = 0; i < m; i++) res += ax[i];
+    return res;
+}
+
+int sum_y(int ay[], int m)
+{
+    int res;
+    for(int i = 0; i < m; i++) res += ay[i];
+    return res;
+}
+
+int sum_x2(int ax[], int m)
+{
+    int res;
+    for(int i = 0; i < m; i++) res += (ax[i]*ax[i]);
+    return res;
+}
+
+int sum_x3(int ax[], int m)
+{
+    int res;
+    for(int i = 0; i < m; i++) res += (ax[i]*ax[i]*ax[i]);
+    return res;
+}
+
+int sum_x4(int ax[], int m)
+{
+    int res;
+    for(int i = 0; i < m; i++) res += (ax[i]*ax[i]*ax[i]*ax[i]);
+    return res;
+}
+
+int sum_xy(int ax[], int ay[], int m)
+{
+    int res;
+    for(int i = 0; i < m; i++) res += (ax[i]*ay[i]);
+    return res;
+}
+
+int sum_x2y(int ax[], int ay[], int m)
+{
+    int res;
+    for(int i = 0; i < m; i++) res += (ax[i]*ax[i]*ay[i]);
+    return res;
+}
+
+int main()
+{
+    int m; cin >> m;
+    int ax[m], ay[m],x, y,x2,x3,x4,xy,x2y, A[3][4], L[4][4], U[4][4];
+    for(int i = 0; i < m; i++)
+    {
+        int x, y; cin >> x >> y;
+        ax[i] = x, ay[i] = y;
+    }
+    x = sum_x(ax,m);
+    y = sum_y(ay,m);
+    x2 = sum_x2(ax,m);
+    x3 = sum_x3(ax,m);
+    x4 = sum_x4(ax,m);
+    xy = sum_xy(ax,ay,m);
+    x2y = sum_x2y(ax,ay,m);
+
+    A[3][4] = {0, m, x, x2, 0, x, x2, x3, 0, x2, x3, x4};
+}
