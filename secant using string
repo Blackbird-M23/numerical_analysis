@@ -30,16 +30,18 @@ x = p;
     {
         if(s[i] == '^') p--;
         if(s[i-1] == '^' && (s[i] >= '0' && s[i] <= '9')) continue;
-        if(s[i-1] != '^' && ((s[i] >= '0' && s[i] <= '9') || (s[i] == '-' || s[i] == '+'))) {s1 += s[i];}
-        if(s[i] == 'x' || s[i] == '='){
+        if(s[i-1] != '^' && ((s[i] >= '0' && s[i] <= '9') || (s[i] == '-' || s[i] == '+'))) {cout << s[i] << endl; s1 += s[i];}
+        if(s[i] == 'x' || s[i] == '='){ //69x^3+x^2-4x^1-10=0
             if(s1.empty()) continue;
             if(s1[0] == '-') {
                     sign = -1;
+                    a[p] = -1;
                     s1.erase(s1.begin()+0);
             }
             else if(s1[0] == '+') s1.erase(s1.begin()+0);
             //cout << "val " << sign*stoi(s1) << endl;
-                    a[p] = sign*stoi(s1);
+            if(s1.empty()) continue;
+                    a[p] *= stoi(s1);
                     sign = 1;
                     s1.clear();
         }
@@ -74,6 +76,6 @@ int main()
         temp = x3;
         x3 = func(x1, x2, a, deg);
     }
-//   x^2-4x^1-10=0
+//   x^4-69x^3+x^2-4x^1-10=0
     cout << endl << "RESULT : " << setprecision(7) << x3 << endl;
 }
